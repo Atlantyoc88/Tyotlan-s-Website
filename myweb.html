@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tyotlan's Website</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="parallax.js/parallax.js"></script>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@400;500;700&display=swap');
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: black;
+            font-family: "Poppins", sans-serif;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        header {
+            color: white;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        header:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 60vh;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+        }
+
+        .container1,
+        .header-bot {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            align-items: center;
+            padding: 5px 25px;
+
+        }
+
+        .name {
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .name:hover {
+            transform: scale(1.15);
+            text-shadow: 0 0 10px cyan;
+        }
+
+        .sign-up {
+            padding: 0.7rem 2rem;
+            background-color: black;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .sign-up:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .title {
+            margin: auto auto;
+            position: relative;
+            font-weight: 600;
+            font-size: 4rem;
+            letter-spacing: 2px;
+            transition: 0.5s;
+            animation: neonGlow 1.5s infinite alternate;
+        }
+
+        @keyframes neonGlow {
+            from {
+                text-shadow: 0 0 10px cyan;
+            }
+
+            to {
+                text-shadow: 0 0 20px cyan, 0 0 30px blue;
+            }
+        }
+
+        .date-time {
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .date-time span {
+            font-size: 1rem;
+        }
+
+        .date-time:hover {
+            transform: scale(1.15);
+            text-shadow: 0 0 10px cyan;
+        }
+
+        .s-media {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+            padding: 0;
+            width: 350px;
+            margin: 10px 10px;
+            align-items: center;
+        }
+
+        .s-media li:hover {
+            transform: scale(1.2);
+            text-shadow: 0 0 10px cyan;
+        }
+
+        .complement {
+            width: 70%;
+            margin: 5vh auto;
+            justify-items: center;
+            justify-content: center;
+        }
+
+        .perkenalan,
+        .ml p {
+            text-align: justify;
+        }
+
+        .hasil-foto {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5vh;
+            margin: 5vh auto;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 67.5%;
+            max-width: 800px;
+        }
+
+        .row:nth-child(even) {
+            flex-direction: row;
+            align-self: flex-end;
+        }
+
+        .row:nth-child(odd) {
+            flex-direction: row-reverse;
+            align-self: flex-start;
+        }
+
+        .box-image {
+            border-radius: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 40px;
+        }
+
+        .text {
+            padding: 30px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .ml {
+            justify-items: center;
+        }
+
+        .ml p {
+            margin-bottom: 0;
+        }
+
+        .ml-images {
+            position: relative;
+            width: 95%;
+            display: grid;
+            place-content: center;
+        }
+
+        .ml-images1,
+        .ml-images2,
+        .akun-ml {
+            position: relative;
+            width: 100%;
+            margin: 5vh 0;
+        }
+
+        .ml-images1 {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+            justify-items: left;
+        }
+
+        .ml-box-images {
+            width: 60%;
+        }
+
+        .ml-images1 .ml-box-images:nth-child(odd) {
+            grid-area: 1 / 1;
+            z-index: 2;
+            justify-items: left;
+        }
+
+        .ml-images1 .ml-box-images:nth-child(even) {
+            grid-area: 1 / 1;
+            z-index: 1;
+            position: relative;
+            left: 20%;
+            top: 30%;
+            opacity: 0.6;
+        }
+
+        .ml-images1 .ml-box-images:nth-child(even):hover {
+            transition: 0.4s;
+            opacity: 1;
+            z-index: 3;
+        }
+
+        .ml-images2 {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: right;
+            justify-items: right;
+            top: 12%;
+        }
+
+        .ml-images2 .ml-box-images:nth-child(odd) {
+            grid-area: 1 / 1;
+            z-index: 2;
+        }
+
+        .ml-images2 .ml-box-images:nth-child(even) {
+            grid-area: 1 / 1;
+            z-index: 1;
+            position: relative;
+            right: 20%;
+            top: 30%;
+            opacity: 0.6;
+        }
+
+        .ml-images2 .ml-box-images:nth-child(even):hover {
+            transition: 0.45s;
+            opacity: 1;
+            z-index: 3;
+        }
+
+        .akun-ml {
+            position: relative;
+            justify-content: center;
+            width: 100%;
+            margin-top: 12%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .akun-ml-box-images {
+            width: 70%;
+        }
+
+        .akun-ml span {
+            padding: 30px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .motivasi {
+            background-color: rgb(20, 20, 20);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .end-word {
+            margin-top: 0;
+            margin-bottom: 5vh;
+            width: 100%;
+            text-align: left;
+        }
+
+        .motivasi {
+            width: 80%;
+        }
+
+        .motivasi p {
+            text-align: center;
+            font-style: italic;
+            font-size: 2.75vh;
+        }
+
+        .line {
+            padding: 0;
+            margin: 0;
+            background-color: rgb(44, 44, 44);
+            width: 100%;
+            height: 01px;
+        }
+
+        footer {
+            padding: 20px 0;
+            text-align: center;
+            justify-items: center;
+            color: rgb(145, 143, 143);
+            background-color: rgb(20, 20, 20);
+        }
+
+
+        @media only screen and (max-width: 950px) {
+            .container1 {
+                width: 90%;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .date-time {
+                display: none;
+            }
+
+            .s-media {
+                width: 100%;
+            }
+
+            .perkenalan p,
+            .ml p {
+                font-size: 15px;
+            }
+
+            .hasil-foto {
+                width: 100%;
+            }
+
+            .text {
+                padding: 0 24px;
+                font-size: 20px;
+            }
+
+            .row {
+                width: 90%;
+            }
+
+            .ml-image {
+                width: 100%;
+            }
+
+            .ml-images1,
+            .ml-images2,
+            .akun-ml {
+                margin: 4vh 0;
+            }
+
+            .ml-box-images {
+                width: 80%;
+            }
+
+            .ml-images2 {
+                position: relative;
+                top: 0.75%;
+            }
+
+            .akun-ml {
+                position: relative;
+                display: block;
+            }
+
+            .ml-account-text1 {
+                position: relative;
+                padding: 0;
+                margin-bottom: 5px;
+                font-size: 20px;
+                text-align: left;
+                align-items: center;
+            }
+
+            .ml-account-text2 {
+                position: relative;
+                padding: 0;
+                margin-top: 1px;
+                font-size: 20px;
+                text-align: right;
+                align-items: center;
+            }
+
+            .akun-ml span {
+                padding: 0;
+                margin: 0;
+                align-items: center;
+            }
+
+            .akun-ml-box-images {
+                position: relative;
+                width: 90%;
+                padding: 0;
+                margin: auto;
+            }
+
+            .end-word {
+                text-align: center;
+                justify-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="parallax-window" data-parallax="scroll" data-image-src="images/wallpaper-kimi-no-nawa.jpg">
+        <nav class="container1">
+            <h1 class="name">Tyotlan</h1>
+            <p class="sign-up">Halo!</p>
+        </nav>
+        <div class="title">Welcome</div>
+        <div class="header-bot">
+            <p class="date-time">18 <span>/ 02</span>
+            </p>
+            <ul class="s-media">
+                <li><a href="https://www.instagram.com/prss.nonjudge/">Instagram</a></li>
+                <li><a href="https://www.tiktok.com/@pr5ty0o?lang=id-ID">Tik-Tok</a></li>
+                <li><a href="https://brainly.co.id/app/profile/38828615/answers">Brainly</a></li>
+                <li><a href="mailto:prastyoramadhan39@email.com">Email</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="complement">
+        <div class="perkenalan">
+            <p>Aku adalah Tyotlan, sebuah nama yang kupilih sebagai username khusus di dunia maya. Nama Tyotlan sendiri
+                berasal dari namaku, yakni "Tyo", yang kugabung dengan bagian dari nama band favoritku, yakni "Chase
+                Atlantic"—lebih tepatnya dari kata "Atlantic", sehingga terbentuklah Tyotlan.
+                <br><br>
+                Salah satu hobiku adalah memotret berbagai tempat dan objek yang menurutku menarik. Bagiku, fotografi
+                bukan sekadar mengambil gambar, tetapi juga menangkap suasana, cahaya, dan emosi yang tersembunyi di
+                balik setiap sudut dunia. Aku senang mengabadikan momen-momen yang mungkin terlihat biasa bagi orang
+                lain, tetapi memiliki makna mendalam bagiku.
+                <br><br>
+                Aku sering mencari sudut-sudut yang estetik, entah itu lanskap kota yang dipenuhi cahaya lampu,
+                lorong-lorong kecil yang memiliki nuansa misterius, atau bahkan detail kecil seperti bayangan cahaya di
+                dinding dan pola-pola unik yang terbentuk secara alami. Setiap foto yang kuambil adalah cerminan dari
+                bagaimana aku melihat dunia—kadang sederhana, kadang penuh makna, tetapi selalu memiliki cerita
+                tersendiri.
+                <br><br>
+                Berikut beberapa hasil jepretan yang telah kuabadikan, yang menurutku memiliki keindahan tersendiri
+                dalam setiap frame-nya:
+            </p>
+        </div>
+
+        <div class="hasil-foto">
+            <div class="row">
+                <div class="text">
+                    <span>G</span><br>
+                    <span>R</span><br>
+                    <span>E</span><br>
+                    <span>E</span><br>
+                    <span>N</span><br>
+                </div>
+                <div class="box-image">
+                    <img src="images/gor-volly-out.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="text">
+                    <span>O</span><br>
+                    <span>R</span><br>
+                    <span>A</span><br>
+                    <span>N</span><br>
+                    <span>G</span><br>
+                    <span>E</span><br>
+                </div>
+                <div class="box-image">
+                    <img src="images/sunset1.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="text">
+                    <span>G</span><br>
+                    <span>R</span><br>
+                    <span>E</span><br>
+                    <span>E</span><br>
+                    <span>N</span><br>
+                </div>
+                <div class="box-image">
+                    <img src="images/gor-volly.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="text">
+                    <span>O</span><br>
+                    <span>R</span><br>
+                    <span>A</span><br>
+                    <span>N</span><br>
+                    <span>G</span><br>
+                    <span>E</span><br>
+                </div>
+                <div class="box-image">
+                    <img src="images/sunset2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="ml">
+            <p>Aku juga memiliki hobi bermain game online, terutama Mobile Legends. Game ini sangat seru karena
+                membutuhkan strategi, kerja sama tim, dan kecepatan dalam mengambil keputusan. Aku lebih suka bermain
+                bersama teman-temanku karena selain lebih menyenangkan, kami juga bisa berkomunikasi dengan lebih baik
+                untuk menyusun strategi dan memenangkan pertandingan. Terkadang, kami bermain dalam mode ranked untuk
+                meningkatkan peringkat, tetapi ada juga saatnya kami hanya bermain santai untuk bersenang-senang.</p>
+
+            <div class="ml-images">
+                <div class="ml-images1">
+                    <div class="ml-box-images">
+                        <img src="images/history-mvp.jpg" class="ml-img1" alt="">
+                    </div>
+                    <div class="ml-box-images">
+                        <img src="images/team.jpg" class="ml-img2" alt="">
+                    </div>
+                </div>
+                <div class="ml-images2">
+                    <div class="ml-box-images">
+                        <img src="images/lylia-title.jpg" class="ml-img3" alt="">
+                    </div>
+                    <div class="ml-box-images">
+                        <img src="images/kda-valen.jpg" class="ml-img4" alt="">
+                    </div>
+                </div>
+                <div class="akun-ml">
+                    <div class="ml-account-text1">
+                        <span>THIS'S MY</span>
+                    </div>
+                    <div class="akun-ml-box-images">
+                        <img src="images/akun-ml.jpg" class="ml-img5" alt="">
+                    </div>
+                    <div class="ml-account-text2">
+                        <span>ACCOUNT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="end-word">Untuk sementara, sampai sini aja dulu.</p>
+
+        <div class="motivasi">
+            <h2>The Words</h2>
+            <p>"Di tengah sunyinya malam, saat angin malam berembus pelan menyentuh kulit, ingatlah bahwa setiap
+                perjuangan yang kamu jalani hari ini tidak akan sia-sia. Biarkan angin itu membawa pergi keraguan dan
+                kelelahanmu, menggantikannya dengan ketenangan dan harapan baru. Seperti malam yang selalu berganti
+                pagi, setiap kesulitan pun akan berlalu, meninggalkanmu lebih kuat dan lebih siap untuk menghadapi hari
+                esok. Jangan menyerah, karena di balik gelapnya malam, ada cahaya yang menanti untuk bersinar."</p>
+        </div>
+    </div>
+
+    <div class="line"></div>
+
+    <footer>
+        &copy; 2025 Tyotlan. All Rights Reserved.
+
+    </footer>
+
+</body>
+
+</html>
